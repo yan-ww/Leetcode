@@ -1,0 +1,11 @@
+方法一：sed -n 10p file.txt
+#-n quiet 
+#p print 打印
+
+方法二：awk 'NR==10{print $0}' file.txt
+#NR 已经读出的记录数
+#FNR 内部
+
+方法三：tail -n +10 file.txt | head -n +1
+#tail -n 10表示文件的最后十行；tail -n +10表示文件第十行到文件末尾
+
