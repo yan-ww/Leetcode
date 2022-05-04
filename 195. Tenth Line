@@ -1,3 +1,5 @@
+Given a text file file.txt, print just the 10th line of the file.
+
 方法一：sed -n 10p file.txt
 #-n quiet 
 #p print 打印
