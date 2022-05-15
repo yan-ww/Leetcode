@@ -1,0 +1,12 @@
+Given a text file file.txt, transpose its content.
+You may assume that each row has the same number of columns, and each field is separated by the ' ' character.
+
+
+solution:
+awk '{for (i=1;i<=NF;i++) {if (NR==1){res[i]=$i;}else{res[i]=res[i]" "$i;}}}END{for(i=1;i<=NF;i++){print res[i]}}' file.txt
+awk+for循环遍历
+NF是对每一个来说域（也就是对每一列来说），NR是对每一行来说，FNR是对每一个文件内部来说的每一行
+res[i]=$i,是把第i列的内容赋给数组res的第i个元素
+后面是对res的第i个元素进行修改，也就是说这个新数组里每一行是一个元素
+print自带换行符，printf不会自带换行符
+感觉与C语言非常类似
