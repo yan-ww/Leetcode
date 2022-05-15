@@ -1,0 +1,14 @@
+write a bash script to calculate the frequency of each word in a text file words.txt.
+For simplicity sake, you may assume:
+words.txt contains only lowercase characters and space ' ' characters.
+Each word must consist of lowercase characters only.
+Words are separated by one or more whitespace characters.
+
+solution:
+cat words.txt | tr -s ' ' '\n' | sort | uniq -c | sort  -r | awk '{print $2" "$1}'
+cat ——浏览文件
+tr -s ——替换字符串（空格换为换行）保证了一行一个单词，tr是sed的省略版，比如把a换成b就是tr -s 'a' 'b'
+sort ——默认ASCII值排序，排序号后还会有重复
+uniq —— 去重，-c再输出重复次数，并把重复次数输出在单词之前。结果就是 ”4 abc“ abc出现了4次，统计次数之前需要先排序！
+sort -r —— 反向排序，也就是从大到小。得到按频率高低的结果
+awk ——格式化输出，规定输出是先字符串再重复次数，所以先$2再$1，中间空格分隔
